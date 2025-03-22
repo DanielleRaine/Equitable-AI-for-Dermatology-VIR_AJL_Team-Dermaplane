@@ -50,6 +50,16 @@
 * The objective of the challenge
 * The real-world significance of the problem and the potential impact of your work
 
+We now live in a world where AI governs access to information, opportunity and freedom. However, AI systems can perpetuate racism, sexism, ableism, and other harmful forms of discrimination, therefore, presenting significant threats to our society - from healthcare, to economic opportunity, to our criminal justice system.
+
+The Algorithmic Justice League is an organization that combines art and research to illuminate the social implications and harms of artificial intelligence.
+
+AJL’s mission is to raise public awareness about the impacts of AI, equip advocates with resources to bolster campaigns, build the voice and choice of the most impacted communities, and galvanize researchers, policymakers, and industry practitioners to prevent AI harms.
+
+AI is transforming healthcare, yet dermatology AI tools often underperform for people with darker skin tones due to a lack of diverse training data. This can lead to diagnostic errors, delayed treatments, and health disparities for underserved communities. This challenge from Break Through Tech and the Algorithmic Justice League invited us to help address this issue by building an inclusive machine learning model for dermatology. 
+
+We aimed to train a model that can classify 21 different skin conditions across diverse skin tones, using the datasets provided by the competition as our starting point. 
+
 ---
 
 ## **📊 Data Exploration**
