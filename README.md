@@ -44,8 +44,6 @@
 
 ## **🏗️ Project Overview**
 
-**Describe:**
-
 We now live in a world where AI governs access to information, opportunity and freedom. However, AI systems can perpetuate racism, sexism, ableism, and other harmful forms of discrimination, therefore, presenting significant threats to our society - from healthcare, to economic opportunity, to our criminal justice system.
 
 The Algorithmic Justice League is an organization that combines art and research to illuminate the social implications and harms of artificial intelligence.
@@ -98,17 +96,6 @@ We aimed to train a model that can classify 21 different skin conditions across 
 ---
 
 ## **🖼️ Impact Narrative**
-
-**Answer the relevant questions below based on your competition:**
-
-**AJL challenge:**
-
-As Dr. Randi mentioned in her challenge overview, “Through poetry, art, and storytelling, you can reach others who might not know enough to understand what’s happening with the machine learning model or data visualizations, but might still be heavily impacted by this kind of work.”
-As you answer the questions below, consider using not only text, but also illustrations, annotated visualizations, poetry, or other creative techniques to make your work accessible to a wider audience.
-Check out [this guide](https://drive.google.com/file/d/1kYKaVNR\_l7Abx2kebs3AdDi6TlPviC3q/view) from the Algorithmic Justice League for inspiration!
-
-1. What steps did you take to address [model fairness](https://haas.berkeley.edu/wp-content/uploads/What-is-fairness_-EGAL2.pdf)? (e.g., leveraging data augmentation techniques to account for training dataset imbalances; using a validation set to assess model performance across different skin tones)
-2. What broader impact could your work have?
 
 To address model fairness, we leveraged data augmentation techniques to balance the number of entries of skin conditions affecting various skin tones. Then, we validated the model performance on a validation data set to assess the impact on classification accuracy across different skin tones.
 
