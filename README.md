@@ -9,7 +9,11 @@
 | Alice Doe | @AliceDoe | Built CNN model, performed data augmentation |
 | Mel Ramakrishnan | @MelRam | Led EDA, visualized dataset distributions, handled missing data |
 | Charlie Nguyen | @CharlieN | Implemented explainability tools |
-
+/\ examples /\
+| Sarah Basil | | |
+| Danielle Raine | | |
+| | | |
+| | | |
 ---
 
 ## **🎯 Project Highlights**
