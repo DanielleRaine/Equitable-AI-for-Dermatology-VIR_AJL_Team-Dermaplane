@@ -32,15 +32,60 @@
 
 ## **👩🏽‍💻 Setup & Execution**
 
-**Provide step-by-step instructions so someone else can run your code and reproduce your results. Depending on your setup, include:**
-
-* How to clone the repository
-* How to install dependencies
-* How to set up the environment
-* How to access the dataset(s)
-* How to run the notebook or scripts
+### **Step 1: Clone the Repository**
+```bash
+git clone https://github.com/DanielleRaine/Equitable-AI-for-Dermatology-VIR_AJL_Team-Dermaplane.git
+```
+Navigate into the directory:
+```bash
+cd Equitable-AI-for-Dermatology-VIR_AJL_Team-Dermaplane
+```
 
 ---
+
+### **Step 2: Install Dependencies**
+Ensure you have Python installed. It's recommended to create a virtual environment to keep dependencies isolated.
+
+1. **Create a virtual environment (optional but recommended):**  
+```bash
+python -m venv env
+```
+2. **Activate the virtual environment:**  
+   - On Windows:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - On macOS/Linux:
+     ```bash
+     source env/bin/activate
+     ```
+3. **Install required packages:**  
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### **Step 3: Set Up the Environment**
+
+```bash
+cp .env.example .env
+```
+Edit the `.env` file with appropriate keys or paths if needed.
+
+---
+### **Step 4: Access the Dataset(s)**
+- Download the dataset(s) from the provided links or resources.
+
+
+---
+### **Step 5: Run the Notebook or Scripts**
+1. **For Jupyter Notebook:**  
+   Launch Jupyter Notebook by running:
+   ```bash
+   jupyter notebook
+   ```
+   Then, navigate to the desired `.ipynb` file in your browser.
 
 ## **🏗️ Project Overview**
 
@@ -58,12 +103,48 @@ We aimed to train a model that can classify 21 different skin conditions across 
 
 ## **📊 Data Exploration**
 
-**Describe:**
+### **Dataset(s) Used**
+This project uses a subset of the **FitzPatrick17k dataset** with approximately **4,500 images** covering **21 dermatological conditions** across various skin tones. The dataset includes:
 
-* The dataset(s) used (i.e., the data provided in Kaggle \+ any additional sources)
-* Data exploration and preprocessing approaches
-* Challenges and assumptions when working with the dataset(s)
+- **images.zip**: Divided into `train/` and `test/` directories.
+- **train.csv**: Metadata for training images.
+- **test.csv**: Metadata for testing (without labels).
+- **sample_submission.csv**: Template for predictions.
 
+---
+
+### **Data Description**
+| Column               | Description                           |
+|----------------------|---------------------------------------|
+| `md5hash`            | Unique image identifier.             |
+| `fitzpatrick_scale`   | Self-reported FitzPatrick Skin Tone. |
+| `label`               | Medical diagnosis (target variable). |
+| `file_path`           | Path to the image file.              |
+| `encoded_label`       | Numerical label for model training.  |
+
+---
+
+### **Preprocessing Approach**
+1. **Data Loading:** Using `pandas` to load `train.csv` and `test.csv`.
+2. **File Path Construction:** Adding `.jpg` extension to `md5hash` and building paths using:
+   ```python
+   train_df['file_path'] = train_df['label'] + '/' + train_df['md5hash'] + '.jpg'
+   ```
+3. **Label Encoding:** Converting labels to numerical values with `LabelEncoder`.
+   ```python
+   from sklearn.preprocessing import LabelEncoder
+   train_df['encoded_label'] = LabelEncoder().fit_transform(train_df['label'])
+   ```
+4. **Image Preprocessing:** Standardization & augmentation via `ImageDataGenerator`.
+
+---
+
+### **Challenges & Assumptions**
+- **Class Imbalance:** Some conditions are over-represented; F1-score is used for evaluation.
+- **Incomplete Metadata:** Limited quality control data (`qc` column) and potential ambiguous labels.
+- **Preprocessing Assumptions:** Images are resized and normalized for model training.
+
+---
 **Potential visualizations to include:**
 
 * Plots, charts, heatmaps, feature visualizations, sample dataset images
