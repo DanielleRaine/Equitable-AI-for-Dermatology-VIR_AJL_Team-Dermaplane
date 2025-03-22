@@ -112,7 +112,7 @@ Check out [this guide](https://drive.google.com/file/d/1kYKaVNR\_l7Abx2kebs3AdDi
 
 To address model fairness, we leveraged data augmentation techniques to balance the number of entries of skin conditions affecting various skin tones. Then, we validated the model performance on a validation data set to assess the impact on classification accuracy across different skin tones.
 
-More Here!
+We want AI to serve everyone equally, whether they have different skin colors, gender identities, sexual orientations, physical abilities, or anything else that makes each person unique. Our work will aid the pursuit of this goal.
 
 ---
 
