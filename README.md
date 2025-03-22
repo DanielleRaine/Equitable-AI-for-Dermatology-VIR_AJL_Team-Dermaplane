@@ -11,8 +11,8 @@
 | Charlie Nguyen | @CharlieN | Implemented explainability tools |
 /\ examples /\
 | Sarah Basil | | |
-| Danielle Raine | | |
-|Jubyaid Uddin |@jubyaid123 | |
+| Danielle Raine | @DanielleRaine | |
+|Jubyaid Uddin | @jubyaid123 | |
 | | | |
 ---
 
