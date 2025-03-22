@@ -110,6 +110,10 @@ Check out [this guide](https://drive.google.com/file/d/1kYKaVNR\_l7Abx2kebs3AdDi
 1. What steps did you take to address [model fairness](https://haas.berkeley.edu/wp-content/uploads/What-is-fairness_-EGAL2.pdf)? (e.g., leveraging data augmentation techniques to account for training dataset imbalances; using a validation set to assess model performance across different skin tones)
 2. What broader impact could your work have?
 
+To address model fairness, we leveraged data augmentation techniques to balance the number of entries of skin conditions affecting various skin tones. Then, we validated the model performance on a validation data set to assess the impact on classification accuracy across different skin tones.
+
+More Here!
+
 ---
 
 ## **🚀 Next Steps & Future Improvements**
