@@ -155,11 +155,6 @@ This project uses a subset of the **FitzPatrick17k dataset** with approximately 
 - **Preprocessing Assumptions:** Images are resized and normalized for model training.
 
 ---
-**Potential visualizations to include:**
-
-* Plots, charts, heatmaps, feature visualizations, sample dataset images
-
----
 
 ## 🧠 Model Development
 
