@@ -83,7 +83,7 @@ Edit the `.env` file with appropriate keys or paths if needed.
 ---
 ### **Step 4: Access the Dataset(s)**
 - Download the dataset(s) from the provided links or resources.
-
+- Unzip or place them in the directory structure referenced by the code (e.g., `../input/bttai-ajl-2025/`).
 
 ---
 ### **Step 5: Run the Notebook or Scripts**
@@ -92,7 +92,8 @@ Edit the `.env` file with appropriate keys or paths if needed.
    ```bash
    jupyter notebook
    ```
-   Then, navigate to the desired `.ipynb` file in your browser.
+2. Open the relevant .ipynb file in your browser and run all cells.
+(Or run in Google Colab / local environment as desired.)
 
 ## **🏗️ Project Overview**
 
@@ -143,6 +144,8 @@ This project uses a subset of the **FitzPatrick17k dataset** with approximately 
    train_df['encoded_label'] = LabelEncoder().fit_transform(train_df['label'])
    ```
 4. **Image Preprocessing:** Standardization & augmentation via `ImageDataGenerator`.
+5. **Handling Negative Fitzpatrick Scales:** We converted negative or unknown scales to 0 to represent "unknown."
+6. **Balancing:** Oversampled each (label, scale) pair to address both label and skin tone imbalances.
 
 ---
 
@@ -158,52 +161,88 @@ This project uses a subset of the **FitzPatrick17k dataset** with approximately 
 
 ---
 
-## **🧠 Model Development**
+## 🧠 Model Development
 
-**Describe (as applicable):**
+1. **Image Preprocessing & Augmentation**  
+   - **Keras** `ImageDataGenerator` with:
+     - `rescale=1/255`
+     - `rotation_range=15`, `width_shift_range=0.1`, `height_shift_range=0.1`, `zoom_range=0.15`
+     - Additional brightness/channel shifts to mimic real-world color variations.
 
-* Model(s) used (e.g., CNN with transfer learning, regression models)
-* Feature selection and Hyperparameter tuning strategies
-* Training setup (e.g., % of data for training/validation, evaluation metric, baseline performance)
-
----
-
-## **📈 Results & Key Findings**
-
-**Describe (as applicable):**
-
-* Performance metrics (e.g., Kaggle Leaderboard score, F1-score)
-* How your model performed overall
-* How your model performed across different skin tones (AJL)
-* Insights from evaluating model fairness (AJL)
-
-**Potential visualizations to include:**
-
-* Confusion matrix, precision-recall curve, feature importance plot, prediction distribution, outputs from fairness or explainability tools
-
----
-
-## **🖼️ Impact Narrative**
-
-To address model fairness, we leveraged data augmentation techniques to balance the number of entries of skin conditions affecting various skin tones. Then, we validated the model performance on a validation data set to assess the impact on classification accuracy across different skin tones.
-
-We want AI to serve everyone equally, whether they have different skin colors, gender identities, sexual orientations, physical abilities, or anything else that makes each person unique. Our work will aid the pursuit of this goal.
+2. **Model Architecture**  
+   - **MobileNetV2** (pretrained on ImageNet, `include_top=False`).
+   - **Custom Head**:
+     ```python
+     layers.GlobalAveragePooling2D(),
+     layers.Dropout(0.3),
+     layers.Dense(256, activation='relu'),
+     layers.Dropout(0.3),
+     layers.Dense(num_classes, activation='softmax')
+     ```
+3. **Training Setup**  
+   - **Optimizer**: `Adam(learning_rate=1e-3)`.
+   - **Loss**: `sparse_categorical_crossentropy`.
+   - **Class Weights**: computed via `sklearn.utils.class_weight.compute_class_weight`.
+   - **Callbacks**:
+     - `EarlyStopping(patience=3, restore_best_weights=True)`
+     - `ModelCheckpoint(save_best_only=True)`
+   - **Fine-Tuning** (optional):
+     - Unfreeze part or all of MobileNetV2 layers at a lower LR (e.g., `1e-5`) after initial training.
 
 ---
 
-## **🚀 Next Steps & Future Improvements**
+## 📈 Results & Key Findings
 
-**Address the following:**
+- **Internal Validation**:
+  - Weighted F1: ~**0.83**  
+  - Observed good performance on major classes, some confusion among visually similar conditions.
 
-* What are some of the limitations of your model?
-* What would you do differently with more time/resources?
-* What additional datasets or techniques would you explore?
+- **Kaggle Submission**:
+  - Public Leaderboard Score: **0.41537**  
+
+- **Performance by Skin Tone** (preliminary):
+  - Oversampling approach helped underrepresented scales (e.g., 5–6).
+  - Would need more thorough per-scale breakdown for deeper fairness insights.
 
 ---
 
-## **📄 References & Additional Resources**
+## 🖼️ Impact Narrative
 
-* Cite any relevant papers, articles, or tools used in your project
+By oversampling underrepresented (condition, skin tone) pairs and using data augmentation, we aimed to improve the model’s sensitivity across different Fitzpatrick scales. This aligns with the **Algorithmic Justice League** mission to reduce bias in AI systems.
+
+**Why it Matters**:  
+- Equitable detection of dermatological conditions can lead to earlier interventions for communities historically underrepresented in clinical imagery.
+- Our approach highlights the importance of balanced data and fairness metrics in medical AI.
 
 ---
 
+## 🚀 Next Steps & Future Improvements
+
+1. **Per-Scale Evaluation**  
+   - Compute F1 or other metrics specifically on each Fitzpatrick scale subset.
+
+2. **Explainability**  
+   - Use Grad-CAM or LIME to see which image regions the model focuses on.
+
+3. **Additional Datasets**  
+   - Merge with other public dermatology sets to broaden coverage of conditions and skin tones.
+
+4. **Hyperparameter Tuning**  
+   - Explore advanced architectures (EfficientNet, Xception) or refined fine-tuning schedules.
+
+5. **Real-World Testing**  
+   - Validate on clinically verified images with broader demographics.
+
+---
+
+## 📄 References & Additional Resources
+
+- **Algorithmic Justice League**: [https://www.ajl.org/](https://www.ajl.org/)  
+- **MobileNetV2 Paper**: Sandler et al. (2018) [*arXiv:1801.04381*](https://arxiv.org/abs/1801.04381)  
+- **FitzPatrick17k Dataset**: Groh et al. (2021) [*arXiv:2104.09957*](https://arxiv.org/abs/2104.09957)  
+- **Keras Documentation**: [https://keras.io/](https://keras.io/)  
+- **Kaggle**: [Competition Link](https://www.kaggle.com/competitions/bttai-ajl-2025/overview)  
+
+**Thank you for checking out our repository!** If you have questions or suggestions, please open an issue or reach out to any team member.
+
+---
