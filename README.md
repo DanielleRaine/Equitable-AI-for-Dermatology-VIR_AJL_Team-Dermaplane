@@ -1,5 +1,7 @@
 # Equitable-AI-for-Dermatology-VIR_AJL_Team-Dermaplane
 
+This repository contains our team's work on the **"Equitable AI for Dermatology"** Kaggle competition, in collaboration with the **Algorithmic Justice League (AJL)**. Our objective: build a fair and inclusive model to classify 21 dermatological conditions across diverse skin tones.
+
 ---
 
 ### **👥 Team Members**
@@ -18,12 +20,16 @@
 
 ## **🎯 Project Highlights**
 
-**Example:**
-
-* Built a CNN using Tensorflow to classify 21 different skin conditions across diverse skin tones
-* Achieved an F1 score of \[insert score\] and a ranking of \[insert ranking out of participating teams\] on the final Kaggle Leaderboard
-* Used \[explainability tool\] to interpret model decisions
-* Implemented \[data preprocessing method\] to optimize results within compute constraints
+- **Dataset**: A subset of the FitzPatrick17k dataset (~4,500 images, 21 conditions, multiple Fitzpatrick skin tones).
+- **Goal**: Achieve high F1 score on multi-class classification, ensuring fair performance across diverse skin tones.
+- **Approach**:
+  - **Data Augmentation**: Rotation, zoom, brightness, color shifts, etc. to handle limited data and reduce overfitting.
+  - **Oversampling**: Balanced out label+Fitzpatrick scale pairs to mitigate underrepresentation.
+  - **Transfer Learning**: MobileNetV2 (pretrained on ImageNet) adapted for dermatology classification.
+- **Notable Results**: 
+  - ~0.83 Weighted F1 on our internal validation set.
+  - **Kaggle Submission Score**: **0.41537** (public leaderboard).
+- **Fairness**: Applied oversampling to ensure more equal representation of higher Fitzpatrick scales.
 
 🔗 [Equitable AI for Dermatology | Kaggle Competition Page](https://www.kaggle.com/competitions/bttai-ajl-2025/overview)
 🔗 [WiDS Datathon 2025 | Kaggle Competition Page](https://www.kaggle.com/competitions/widsdatathon2025/overview)
@@ -38,6 +44,7 @@ git clone https://github.com/DanielleRaine/Equitable-AI-for-Dermatology-VIR_AJL_
 ```
 Navigate into the directory:
 ```bash
+git clone https://github.com/DanielleRaine/Equitable-AI-for-Dermatology-VIR_AJL_Team-Dermaplane.git
 cd Equitable-AI-for-Dermatology-VIR_AJL_Team-Dermaplane
 ```
 
