@@ -12,9 +12,9 @@ This repository contains our team's work on the **"Equitable AI for Dermatology"
 | Mel Ramakrishnan | @MelRam | Led EDA, visualized dataset distributions, handled missing data |
 | Charlie Nguyen | @CharlieN | Implemented explainability tools |
 /\ examples /\
-| Sarah Basil | | |
-| Danielle Raine | @DanielleRaine | |
-|Jubyaid Uddin | @jubyaid123 | |
+| Sarah Basil | @Sarah-Basil | Contributed to Data Exploration and Model development |
+| Danielle Raine | @DanielleRaine | Contributed to testing and finetuning the models|
+|Jubyaid Uddin | @jubyaid123 | Contributed to early data exploration and preprocessing |
 | | | |
 ---
 
