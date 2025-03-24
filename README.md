@@ -8,10 +8,6 @@ This repository contains our team's work on the **"Equitable AI for Dermatology"
 
 | Name | GitHub Handle | Contribution |
 | ----- | ----- | ----- |
-| Alice Doe | @AliceDoe | Built CNN model, performed data augmentation |
-| Mel Ramakrishnan | @MelRam | Led EDA, visualized dataset distributions, handled missing data |
-| Charlie Nguyen | @CharlieN | Implemented explainability tools |
-/\ examples /\
 | Sarah Basil | @Sarah-Basil | Contributed to Data Exploration and Model development |
 | Danielle Raine | @DanielleRaine | Contributed to testing and finetuning the models|
 |Jubyaid Uddin | @jubyaid123 | Contributed to early data exploration and preprocessing |
